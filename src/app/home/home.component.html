@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-12 p-5">
+        <form>
+            <div class="mb-3">
+                <!-- <label for="videoUrl" class="form-label">Video URL</label> -->
+                <input type="text" class="form-control text-center" id="videoUrl"
+                    placeholder="Paste video url here....." (paste)="fetchVideoDetails($event)">
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-12 p-3" *ngIf="showVideoList">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 thumbnail">
+                        <img src={{videoDetails?.videoThumbnail}} alt={{videoDetails?.videoTitle}}>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 ulli">
+                        <ul>
+                            <li>Title : {{videoDetails?.videoTitle}}</li>
+                            <li>Channel Name: {{videoDetails?.videoAuthor}}</li>
+                            <li>Length: {{videoDetails?.videoDuration}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center allformats" *ngFor="let video of formats">
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 padding "><img src={{videoDetails?.videoThumbnail}} alt={{videoDetails?.videoTitle}}></div>
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 padding" id="videoQuality">{{video?.quality}}</div>
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 padding" id="qualityLabel">{{video?.qualityLabel}}</div>
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 padding" id="downloadbtn">Download</div>
+    </div>
+</div>

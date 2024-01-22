@@ -1,0 +1,49 @@
+*{
+    list-style: none;
+}
+.thumbnail img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.ulli ul li{
+    padding: 1%;
+    
+}
+.showDatas{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.btn-success{
+    text-align: center;
+}
+.allformats{
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.padding{
+    padding: 1%;
+}
+#videoQuality{
+    background-color: aquamarine;
+    color: black;
+    font-weight: 600;
+}
+#qualityLabel{
+    background-color: rgb(126, 119, 221);
+    color: black;
+    font-weight: 600;
+}
+#downloadbtn{
+    background-color: rgb(68, 248, 3);
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+}
+#videoUrl{
+    width: 50%;
+    margin: auto;
+    border-style: 2px solid rgb(0, 0, 0) ;
+    border-width: 2px;
+}
