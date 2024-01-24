@@ -28,9 +28,20 @@
     </div>
 
     <div class="row text-center allformats" *ngFor="let video of formats">
-        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 padding "><img src={{videoDetails?.videoThumbnail}} alt={{videoDetails?.videoTitle}}></div>
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 padding "><img src={{videoDetails?.videoThumbnail}}
+                alt={{videoDetails?.videoTitle}}></div>
         <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 padding" id="videoQuality">{{video?.quality}}</div>
         <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 padding" id="qualityLabel">{{video?.qualityLabel}}</div>
-        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 padding" id="downloadbtn">Download</div>
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 padding" id="downloadbtn">
+            <button type="button"  (click)="downloadVideo(video?.url)">
+                Download Video
+            </button>
+            <div *ngIf="percentComplete !== undefined">
+                <progress [value]="percentComplete" max="100"></progress>
+              </div>
+            <!-- fileSaver [method]="'GET'" [fileName]="'demo.mp4'" [url]="video?.url" -->
+
+
+        </div>
     </div>
 </div>

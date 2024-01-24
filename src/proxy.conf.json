@@ -1,0 +1,14 @@
+{
+  "/": {
+    "target": [
+        "https://rr1---sn-gwpa-qxay.googlevideo.com",
+        "https://rr6---sn-gwpa-qxay.googlevideo.com"
+
+    ],
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/": ""
+    }
+  }
+}

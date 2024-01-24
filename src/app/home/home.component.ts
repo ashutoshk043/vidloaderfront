@@ -11,6 +11,7 @@ export class HomeComponent {
   showVideoList:boolean=false
   videoDetails:any
   formats:any
+  percentComplete:any
 
   constructor(private http:HttpClient){
 
@@ -35,4 +36,45 @@ export class HomeComponent {
       })
     }
   }
+
+  downloadVideo(url: any) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'blob';
+    
+
+    xhr.onprogress = (event) => {
+      if (event.lengthComputable) {
+        this.percentComplete = (event.loaded / event.total) * 100;
+        console.log('Download Progress:', this.percentComplete.toFixed(2) + '%');
+      }
+    };
+
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        const blob = xhr.response;
+        this.saveBlob(blob, 'downloadedFile'); // Replace 'downloadedFile' with your desired file name
+      } else {
+        console.error('Failed to download file. Status:', xhr.status);
+      }
+    };
+
+    xhr.send();
+  }
+
+  private saveBlob(blob: Blob, fileName: string): void {
+    const temporaryDownloadLink = document.createElement('a');
+    document.body.appendChild(temporaryDownloadLink);
+
+    const objectUrl = window.URL.createObjectURL(blob);
+    temporaryDownloadLink.href = objectUrl;
+    temporaryDownloadLink.download = fileName;
+
+    temporaryDownloadLink.click();
+
+    document.body.removeChild(temporaryDownloadLink);
+    window.URL.revokeObjectURL(objectUrl);
+  }
+
+
 }
